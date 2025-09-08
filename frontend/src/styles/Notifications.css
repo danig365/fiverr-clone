@@ -1,0 +1,60 @@
+.notifications {
+  position: relative;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.notif-bell {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.notif-badge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.notif-dropdown {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.notif-item {
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.notif-item.unread {
+  background-color: #f9f9ff;
+  font-weight: bold;
+}
+
+.notif-item.read {
+  background-color: #fff;
+  color: #666;
+}
+
+.notif-empty {
+  padding: 15px;
+  text-align: center;
+  color: #777;
+}

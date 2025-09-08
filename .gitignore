@@ -1,0 +1,27 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.sqlite3
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+
+# Environment
+.env
+
+# Node / React
+node_modules/
+dist/
+build/
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Testing cache
+.pytest_cache/

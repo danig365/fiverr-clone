@@ -1,0 +1,314 @@
+/* CreateGig.css - Fiverr-inspired gig creation form styling */
+
+/* Main container */
+.create-gig-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Macan', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: #ffffff;
+}
+
+/* Page title */
+.create-gig-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #404145;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.create-gig-subtitle {
+  text-align: center;
+  color: #62646a;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+/* Error message */
+.error-message {
+  background: #fff2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  color: #dc2626;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Form styling */
+.create-gig-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Form sections */
+.form-section {
+  background: #ffffff;
+  border: 1px solid #e4e5e7;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.form-section:hover {
+  border-color: #1dbf73;
+  box-shadow: 0 4px 16px rgba(29, 191, 115, 0.08);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #404145;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #1dbf73;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Input group styling */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #404145;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.input-description {
+  font-size: 0.875rem;
+  color: #62646a;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Base input styling */
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e4e5e7;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #404145;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  border-color: #1dbf73;
+  box-shadow: 0 0 0 3px rgba(29, 191, 115, 0.1);
+}
+
+.form-input::placeholder {
+  color: #b5b6ba;
+  font-weight: 400;
+}
+
+/* Textarea specific styling */
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Number input styling */
+.form-number {
+  max-width: 200px;
+}
+
+/* File input styling */
+.file-input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 2px dashed #e4e5e7;
+  border-radius: 8px;
+  background: #fafbfc;
+  color: #62646a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.file-input-label:hover {
+  border-color: #1dbf73;
+  background: #f0fdf4;
+  color: #1dbf73;
+}
+
+.file-input-label.has-file {
+  border-color: #1dbf73;
+  background: #f0fdf4;
+  color: #1dbf73;
+}
+
+.file-icon {
+  font-size: 1.5rem;
+}
+
+/* Two-column layout for smaller inputs */
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Submit button */
+.submit-button {
+  background: linear-gradient(135deg, #1dbf73 0%, #19a463 100%);
+  color: white;
+  border: none;
+  padding: 1.25rem 2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #19a463 0%, #158a54 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 191, 115, 0.25);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* Required field indicator */
+.required {
+  color: #ff6b35;
+  margin-left: 0.25rem;
+}
+
+/* Submit note */
+.submit-note {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #62646a;
+  margin-top: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Form validation and interaction states */
+.form-input:focus:valid {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.form-input:focus:invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Loading state for submit button */
+.submit-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-button:disabled:hover {
+  background: #9ca3af;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .create-gig-container {
+    padding: 1rem;
+  }
+  
+  .create-gig-title {
+    font-size: 2rem;
+  }
+  
+  .form-section {
+    padding: 1.5rem;
+  }
+  
+  .input-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-gig-title {
+    font-size: 1.75rem;
+  }
+  
+  .form-section {
+    padding: 1rem;
+  }
+  
+  .submit-button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Progress indicator (visual enhancement) */
+.form-progress {
+  width: 100%;
+  height: 4px;
+  background: #e4e5e7;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.form-progress::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(90deg, #1dbf73, #00a65a);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}

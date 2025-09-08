@@ -1,0 +1,248 @@
+/* ConversationDetail.css - Light Chat Interface */
+
+.conversation-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffff;
+  height: calc(100vh - 20vh);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e8e9ea;
+  overflow: hidden;
+}
+
+.conversation-header {
+  padding: 20px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e8e9ea;
+  flex-shrink: 0;
+}
+
+.conversation-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #62646a;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  word-wrap: break-word;
+  position: relative;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-bubble.mine {
+  align-self: flex-end;
+  background: #1dbf73;
+  color: #ffffff;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 1px 3px rgba(29, 191, 115, 0.2);
+}
+
+.message-bubble.theirs {
+  align-self: flex-start;
+  background: #ffffff;
+  color: #404145;
+  border: 1px solid #e8e9ea;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.message-text {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 300;
+  margin: 0;
+}
+
+.message-form {
+  padding: 20px 24px;
+  background: #ffffff;
+  border-top: 1px solid #e8e9ea;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.message-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #e8e9ea;
+  border-radius: 24px;
+  background: #f8f9fa;
+  font-size: 14px;
+  font-weight: 300;
+  color: #404145;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.message-input:focus {
+  border-color: #1dbf73;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(29, 191, 115, 0.1);
+}
+
+.message-input::placeholder {
+  color: #95979d;
+  font-weight: 300;
+}
+
+.send-button {
+  padding: 12px 20px;
+  background: #1dbf73;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 70px;
+  font-family: inherit;
+}
+
+.send-button:hover {
+  background: #00a652;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(29, 191, 115, 0.3);
+}
+
+.send-button:active {
+  transform: translateY(0);
+  background: #009149;
+}
+
+.send-button:disabled {
+  background: #c7c8ca;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Scrollbar styling */
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #c7c8ca;
+  border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #95979d;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .conversation-container {
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+  }
+  
+  .conversation-header {
+    padding: 16px 20px;
+  }
+  
+  .conversation-title {
+    font-size: 16px;
+  }
+  
+  .messages-container {
+    padding: 16px 20px;
+  }
+  
+  .message-bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+  }
+  
+  .message-text {
+    font-size: 13px;
+  }
+  
+  .message-form {
+    padding: 16px 20px;
+    gap: 10px;
+  }
+  
+  .message-input {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .send-button {
+    padding: 10px 16px;
+    font-size: 13px;
+    min-width: 60px;
+  }
+}
+
+/* Empty messages state */
+.messages-container:empty::before {
+  content: "💬 Start the conversation";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #95979d;
+  font-size: 16px;
+  font-weight: 300;
+}
+/* Default time (for theirs) */
+.message-time {
+  font-size: 11px;
+  margin-top: 4px;
+  text-align: right;
+  color: #95979d; /* grey for light bubble */
+}
+
+/* If it's the other person's bubble */
+.message-bubble.theirs .message-time {
+  text-align: left;
+  color: #62646a; /* darker text to match their message */
+}
+
+/* If it's my bubble */
+.message-bubble.mine .message-time {
+  text-align: right;
+  color: #e6f7ef; /* light greenish-white for contrast */
+  opacity: 0.9;
+}
+

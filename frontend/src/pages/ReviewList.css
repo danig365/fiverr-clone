@@ -1,0 +1,330 @@
+/* ReviewList.css - Fiverr Style */
+
+.reviews-section {
+  margin-top: 2rem;
+  max-width: 100%;
+  margin: 5%;
+}
+
+.reviews-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #404145;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #62646a;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.review-stats {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  border: 1px solid #e4e5e7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stats-summary {
+  margin-bottom: 24px;
+}
+
+.average-rating {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.rating-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: #404145;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 20px;
+  color: #dadbdd;
+  transition: none;
+}
+
+.star.filled {
+  color: #ffb33e;
+}
+
+.total-reviews {
+  color: #62646a;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.rating-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rating-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rating-label {
+  width: 30px;
+  font-size: 14px;
+  color: #404145;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.bar-container {
+  flex: 1;
+  height: 8px;
+  background: #f7f7f7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #1dbf73;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+.rating-count {
+  width: 40px;
+  font-size: 14px;
+  color: #62646a;
+  text-align: right;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.no-reviews {
+  text-align: center;
+  padding: 48px 24px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e4e5e7;
+}
+
+.no-reviews p {
+  color: #62646a;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-item {
+  background: #ffffff;
+  border: 1px solid #e4e5e7;
+  border-radius: 8px;
+  padding: 24px;
+  transition: box-shadow 0.2s ease;
+}
+
+.review-item:hover {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  background: #1dbf73;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.reviewer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reviewer-name {
+  font-weight: 600;
+  color: #404145;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.review-date {
+  font-size: 14px;
+  color: #62646a;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.review-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.review-rating .star {
+  font-size: 16px;
+}
+
+.review-comment {
+  color: #404145;
+  line-height: 1.5;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .reviews-section {
+    margin-top: 1.5rem;
+  }
+
+  .reviews-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .review-stats {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .stats-summary {
+    margin-bottom: 20px;
+  }
+
+  .average-rating {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .rating-number {
+    font-size: 36px;
+  }
+
+  .star {
+    font-size: 18px;
+  }
+
+  .rating-breakdown {
+    gap: 10px;
+  }
+
+  .rating-bar {
+    gap: 10px;
+  }
+
+  .rating-label {
+    width: 25px;
+    font-size: 13px;
+  }
+
+  .rating-count {
+    width: 35px;
+    font-size: 13px;
+  }
+
+  .review-item {
+    padding: 20px;
+  }
+
+  .review-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .reviewer-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .reviewer-info {
+    gap: 10px;
+  }
+
+  .review-comment {
+    font-size: 14px;
+  }
+
+  .no-reviews {
+    padding: 36px 20px;
+  }
+
+  .no-reviews p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-title {
+    font-size: 18px;
+  }
+
+  .rating-number {
+    font-size: 32px;
+  }
+
+  .review-stats {
+    padding: 16px;
+  }
+
+  .review-item {
+    padding: 16px;
+  }
+
+  .reviewer-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .total-reviews {
+    font-size: 13px;
+  }
+}

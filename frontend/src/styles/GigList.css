@@ -1,0 +1,264 @@
+/* GigList.css - Fiverr-inspired styling (Fixed Price Display) */
+
+/* Main container */
+.gig-list-container {
+  max-width: 90%px;
+  margin: 5%;
+  padding: 2rem 1rem;
+  font-family: 'Macan', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: #ffffff;
+}
+
+/* Header styling */
+.gig-list-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #404145;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* Search form container */
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Search input */
+.search-input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e4e5e7;
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #62646a;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #1dbf73;
+  box-shadow: 0 0 0 3px rgba(29, 191, 115, 0.1);
+}
+
+.search-input::placeholder {
+  color: #b5b6ba;
+  font-weight: 400;
+}
+
+/* Search button */
+.search-button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1dbf73 0%, #19a463 100%);
+  border: none;
+  border-radius: 0 6px 6px 0;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.search-button:hover {
+  background: linear-gradient(135deg, #19a463 0%, #158a54 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(29, 191, 115, 0.25);
+}
+
+.search-button:active {
+  transform: translateY(0);
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.1rem;
+  color: #62646a;
+  font-weight: 500;
+}
+
+/* Gigs grid container */
+.gigs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual gig card */
+.gig-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid #e4e5e7;
+  position: relative;
+}
+
+.gig-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #1dbf73;
+}
+
+/* Gig card link */
+.gig-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+/* Gig card content */
+.gig-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  height: auto;
+}
+
+/* Gig title */
+.gig-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #404145;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.gig-card:hover .gig-title {
+  color: #1dbf73;
+}
+
+/* Price section - simplified approach */
+.gig-price-section {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #f1f2f4;
+  text-align: right;
+}
+
+.gig-price-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #62646a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.gig-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1dbf73;
+  display: block;
+  line-height: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gig-list-container {
+    padding: 1rem;
+  }
+  
+  .gig-list-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .gigs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .search-form {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .search-input {
+    border-radius: 6px;
+    border-right: 2px solid #e4e5e7;
+  }
+  
+  .search-button {
+    border-radius: 6px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gig-content {
+    padding: 1rem;
+  }
+  
+  .gig-title {
+    font-size: 1rem;
+  }
+  
+  .gig-price {
+    font-size: 1.25rem;
+  }
+}
+
+/* Card enhancement */
+.gig-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1dbf73, #00a65a);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.gig-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #62646a;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #404145;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
