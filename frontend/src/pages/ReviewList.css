@@ -1,4 +1,4 @@
-/* ReviewList.css - Fiverr Style */
+/* ReviewList.css - Enhanced Fiverr Style */
 
 .reviews-section {
   margin-top: 2rem;
@@ -21,6 +21,23 @@
   font-size: 16px;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e4e5e7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: #ff6b6b;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #fff5f5;
+  border-radius: 8px;
+  border: 1px solid #ffe0e0;
+  margin-bottom: 24px;
 }
 
 .review-stats {
@@ -63,6 +80,7 @@
 
 .star.filled {
   color: #ffb33e;
+  text-shadow: 0 1px 2px rgba(255, 179, 62, 0.3);
 }
 
 .total-reviews {
@@ -122,6 +140,7 @@
   background: #ffffff;
   border-radius: 8px;
   border: 1px solid #e4e5e7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .no-reviews p {
@@ -143,11 +162,32 @@
   border: 1px solid #e4e5e7;
   border-radius: 8px;
   padding: 24px;
-  transition: box-shadow 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
 }
 
 .review-item:hover {
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-color: #dadbdd;
+  transform: translateY(-2px);
+}
+
+.review-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #1dbf73;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.review-item:hover::before {
+  opacity: 1;
 }
 
 .review-header {
@@ -163,12 +203,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
 }
 
 .reviewer-avatar {
-  width: 40px;
-  height: 40px;
-  background: #1dbf73;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #1dbf73 0%, #19a463 100%);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -177,12 +218,20 @@
   font-weight: 600;
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 2px 8px rgba(29, 191, 115, 0.25);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.review-item:hover .reviewer-avatar {
+  transform: scale(1.05);
 }
 
 .reviewer-details {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .reviewer-name {
@@ -190,6 +239,8 @@
   color: #404145;
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.3;
+  word-break: break-word;
 }
 
 .review-date {
@@ -197,29 +248,85 @@
   color: #62646a;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.2;
 }
 
 .review-rating {
   display: flex;
   gap: 2px;
+  flex-shrink: 0;
+  align-items: center;
 }
 
 .review-rating .star {
   font-size: 16px;
+  transition: color 0.2s ease;
 }
 
 .review-comment {
   color: #404145;
-  line-height: 1.5;
-  font-size: 14px;
+  line-height: 1.6;
+  font-size: 15px;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  word-break: break-word;
+  white-space: pre-line;
 }
+
+/* Loading animation */
+.loading {
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #e4e5e7;
+  border-top-color: #1dbf73;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade-in animation for reviews */
+.review-item {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation for multiple reviews */
+.review-item:nth-child(1) { animation-delay: 0.1s; }
+.review-item:nth-child(2) { animation-delay: 0.2s; }
+.review-item:nth-child(3) { animation-delay: 0.3s; }
+.review-item:nth-child(4) { animation-delay: 0.4s; }
+.review-item:nth-child(5) { animation-delay: 0.5s; }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .reviews-section {
     margin-top: 1.5rem;
+    margin: 4%;
   }
 
   .reviews-title {
@@ -270,6 +377,7 @@
 
   .review-item {
     padding: 20px;
+    margin-bottom: 12px;
   }
 
   .review-header {
@@ -279,17 +387,31 @@
   }
 
   .reviewer-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
   }
 
   .reviewer-info {
     gap: 10px;
+    width: 100%;
+  }
+
+  .reviewer-name {
+    font-size: 15px;
+  }
+
+  .review-date {
+    font-size: 13px;
   }
 
   .review-comment {
     font-size: 14px;
+  }
+
+  .review-rating {
+    align-self: flex-end;
+    margin-top: -8px;
   }
 
   .no-reviews {
@@ -299,11 +421,22 @@
   .no-reviews p {
     font-size: 14px;
   }
+
+  .loading,
+  .error-message {
+    padding: 2rem 1rem;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
+  .reviews-section {
+    margin: 3%;
+  }
+
   .reviews-title {
     font-size: 18px;
+    margin-bottom: 16px;
   }
 
   .rating-number {
@@ -319,12 +452,71 @@
   }
 
   .reviewer-avatar {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .reviewer-name {
+    font-size: 14px;
+  }
+
+  .review-date {
+    font-size: 12px;
+  }
+
+  .review-comment {
     font-size: 13px;
+    line-height: 1.5;
   }
 
   .total-reviews {
+    font-size: 12px;
+  }
+
+  .review-rating .star {
+    font-size: 14px;
+  }
+
+  .loading,
+  .error-message {
+    padding: 1.5rem;
     font-size: 13px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .review-item {
+    border-width: 2px;
+  }
+  
+  .reviewer-avatar {
+    border: 2px solid #404145;
+  }
+  
+  .star.filled {
+    color: #d4a500;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .review-item,
+  .reviewer-avatar,
+  .star {
+    transition: none;
+  }
+  
+  .review-item {
+    animation: none;
+  }
+  
+  .review-item:hover {
+    transform: none;
+  }
+  
+  .loading::after {
+    animation: none;
   }
 }

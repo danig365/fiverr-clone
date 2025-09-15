@@ -30,9 +30,15 @@ class GigImageSerializer(serializers.ModelSerializer):
         return None
 
 
+# Import the review serializer
+from reviews.serializers import ReviewDisplaySerializer
+
+
 class GigListSerializer(serializers.ModelSerializer):
     seller = SellerSerializer(read_only=True)
     thumbnail_url = serializers.SerializerMethodField(read_only=True)
+    average_rating = serializers.SerializerMethodField(read_only=True)
+    total_reviews = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Gig
@@ -47,6 +53,8 @@ class GigListSerializer(serializers.ModelSerializer):
             "seller",
             "created_at",
             "is_active",
+            "average_rating",
+            "total_reviews",
         )
 
     def get_thumbnail_url(self, obj):
@@ -57,16 +65,26 @@ class GigListSerializer(serializers.ModelSerializer):
             return obj.thumbnail.url
         return None
 
+    def get_average_rating(self, obj):
+        if hasattr(obj, 'reviews') and obj.reviews.exists():
+            ratings = obj.reviews.values_list('rating', flat=True)
+            return round(sum(ratings) / len(ratings), 1)
+        return 0
+
+    def get_total_reviews(self, obj):
+        return obj.reviews.count() if hasattr(obj, 'reviews') else 0
+
 
 class GigDetailSerializer(GigListSerializer):
     description = serializers.CharField(read_only=True)
     tags = serializers.SlugRelatedField(many=True, read_only=True, slug_field="name")
     images = GigImageSerializer(many=True, read_only=True)
     category = serializers.SerializerMethodField(read_only=True)
+    reviews = ReviewDisplaySerializer(many=True, read_only=True)
 
     class Meta(GigListSerializer.Meta):
         model = Gig
-        fields = GigListSerializer.Meta.fields + ("description", "tags", "images", "category")
+        fields = GigListSerializer.Meta.fields + ("description", "tags", "images", "category", "reviews")
 
     def get_category(self, obj):
         return obj.category.name if obj.category else None
@@ -111,7 +129,8 @@ class GigCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         request = self.context.get("request")
         tags = validated_data.pop("tags", [])
-        gig = Gig.objects.create(**validated_data)  # ❌ removed seller=request.user
+        validated_data['seller'] = request.user  # Fix: Add seller to validated_data
+        gig = Gig.objects.create(**validated_data)
         for t in tags:
             if not t:
                 continue

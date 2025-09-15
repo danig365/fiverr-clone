@@ -15,7 +15,12 @@ from .permissions import IsSeller, IsOwnerOrReadOnly
 
 
 class GigViewSet(viewsets.ModelViewSet):
-    queryset = Gig.objects.filter(is_active=True).select_related("seller", "category").prefetch_related("tags", "images")
+    # Updated queryset to include reviews prefetch
+    queryset = Gig.objects.filter(is_active=True).select_related("seller", "category").prefetch_related(
+        "tags", 
+        "images", 
+        "reviews__reviewer"  # This prefetches reviews with their reviewers
+    )
     lookup_field = "slug"
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ["title", "description", "tags__name", "category__name"]
@@ -40,6 +45,16 @@ class GigViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(seller=self.request.user)
 
+    def get_queryset(self):
+        """Override get_queryset to ensure reviews are always prefetched"""
+        queryset = super().get_queryset()
+        
+        # For retrieve action (gig detail), make sure reviews are prefetched
+        if self.action == 'retrieve':
+            queryset = queryset.prefetch_related('reviews__reviewer')
+            
+        return queryset
+
     @action(detail=True, methods=["post"], permission_classes=[IsOwnerOrReadOnly])
     def upload_image(self, request, slug=None):
         gig = self.get_object()
@@ -50,7 +65,11 @@ class GigViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"], url_path="by-seller/(?P<seller_id>[^/.]+)")
     def by_seller(self, request, seller_id=None):
-        gigs = Gig.objects.filter(seller_id=seller_id, is_active=True)
+        gigs = Gig.objects.filter(
+            seller_id=seller_id, 
+            is_active=True
+        ).select_related("seller", "category").prefetch_related("tags", "images", "reviews__reviewer")
+        
         page = self.paginate_queryset(gigs)
         if page is not None:
             serializer = GigListSerializer(page, many=True, context={"request": request})
